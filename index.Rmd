@@ -207,7 +207,7 @@ write.csv(x = my_select, file = "data/my_select.csv")
 
 
 <div class="alert alert-info" role="alert">
-Un projet Rstudio avec la correction de l'exercice est disponible à ce lien : ....
+**Un projet Rstudio avec la correction de l'exercice est disponible en téléchargement à** [**ce lien**](https://github.com/HuguesPecout/CIST_EE_Formation_R_1/archive/refs/heads/master.zip).
 </div>
 
 </br>
