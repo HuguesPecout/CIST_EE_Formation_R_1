@@ -1,0 +1,261 @@
+---
+title: "**Ecole été CIST - Formation R**"
+subtitle: "**Séance 1** : Introduction à R & R studio, installation, premières manipulations"
+author: ""
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Sys.Date()
+```
+
+
+<div class="alert alert-success" role="alert">
+**Date** : 22 mars 2022     
+**Heure** : 9h (GMT+1:00, Paris)     
+**Lien zoom** (live) : https://u-paris.zoom.us/j/85767047243?pwd=VnhtQkpEZ2RudWZiakRtakZBR2tXZz09    
+ID de réunion : 857 6704 7243    
+Code secret : 216590    
+</div>
+
+<div class="alert alert-info" role="alert">
+**Enregistrement vidéo de la séance disponible à ce lien** : *A venir*
+</div>
+
+
+
+</br>
+
+### **A. Supports de formation :**
+<div class="alert alert-info" role="alert">
+**Diaporama 1** : [Analyse de données avec R : Contextualisation et présentation de R et Rstudio](https://huguespecout.github.io/R_presentation_FR/#/)         
+**Diaporama 2** : [Introduction à R (Base du langage, packages, Rstudio et documentation)](https://huguespecout.github.io/Intro_R_Rstudio_FR/)
+</div>
+
+</br>
+
+
+### **B. Exercice :** 
+
+
+
+**1.** Installez R : https://cran.r-project.org/
+
+
+**2.** Installez Rstudio desktop (version gratuite) : https://www.rstudio.com/products/rstudio/download/
+
+
+**3.** Lancez Rstudio (et donc R...)
+
+
+**4.** Créez un projet Rstudio : *File / New Project / New directory / New Project / ....*
+
+
+**5.** Créez un nouveau fichier de script R.
+
+  - En clic-bouton avec Rstudio : *File / New File / R SCript* puis *File / Save* pour l'enregistrer   
+  - Ou Raccourci clavier :`ctrl`+`SHIFT`+`N` puis `ctrl`+`s` pour l'enregistrer
+  - Ou en utilisant cette fonction dans la console :
+
+```{r, eval=FALSE, echo=TRUE}
+file.create("Mon_script.R")
+```
+
+</br>
+
+
+**6**. Créez un sous-répertoire *data* dans le répertoire de votre projet. Vous pouvez le faire manuellement, ou en utilisant la fonction suivante :
+
+
+```{r , eval=FALSE, echo=TRUE}
+dir.create("data")
+```
+
+</br>
+
+**7.** Téléchargez le fichier "*wb_don_1990_2019.xls*" mis à disposition sur le *Sharedocs* (https://bit.ly/3683nRN). Ce fichier comporte des  données sont issues de la Banque Mondiale. Enregistrez-le dans le sous-répertoire *data*. Cette opération peut être réalisée "manuellement", mais peut également être automatisée avec R : 
+
+```{r , eval=FALSE, echo=TRUE}
+download.file(url = "https://sharedocs.huma-num.fr/wl/?id=OIdQC31yRfOfrXLPqCfWCxhNffoVrNXj&mode=grid&download=1",
+              destfile = "data/wb_don_1990_20192.xlsx")
+```
+
+</br>
+
+
+
+**8.** Installez le package `readxl`, en clic-bouton avec Rstudio ou en ligne de commande dans la console : 
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("readxl")
+```
+
+
+</br>
+
+**9.** Dans votre fichier script, commencez par écrire la fonction qui permet de charger la librairie de fonctions `readxl` :
+
+```{r, eval=FALSE, echo=TRUE}
+library(readxl)
+```
+
+
+</br>
+
+**10.** Utilisez la fonction `read_excel()` pour importer le 3e onglet du fichier de données "*wb_don_1990_2019.xls*". **Assignez-le dans un objet**.
+
+```{r, eval=FALSE, echo=TRUE}
+# Accédez à l'aide de la fonction read_excel()
+?read_xls
+
+# L'argument sheet vous permet de choisir quel onglet à importer, ex :
+read_xls(path = "data/wb_don_1990_2019.xls",
+         sheet = 3)
+
+# N'oubliez pas d'assigner le résultat de l'import dans un objet !
+my_data <- read_xls(path = ... )
+```
+
+</br>
+
+**11.** Explorez votre nouvel objet créé, qui contient le tableau de données importé :
+
+   - En clic-bouton avec l'interface Rstudio (dans la fenêtre situé en haut à droite, onglet *Environment*)
+   - En appliquant les fonctions suivantes sur votre objet:
+   
+
+```{r, eval=FALSE, echo=TRUE}
+
+# Ouvrir le tableau de l'IDE Rstudio :
+View()
+# Nombre de ligne du tableau :
+nrow()
+# Nombre de colonnes
+ncol()
+# Nombre de lignes et de colonnes :
+dim()
+# Noms des colonnes du tableau :
+colnames()
+
+```
+
+</br>
+
+
+**12.** Sélectionner uniquement les pays de la région Sub-saharienne ET les colonnes de 1 à 13 :
+
+
+```{r, eval=FALSE, echo=TRUE}
+
+# Sélection basique [ligne, colonne]
+my_data[my_data$region %in% "......", ]
+
+# OU Sélection avec fonction primitive subset()
+subset(x = ......, 
+       subset =  region %in% "......", 
+       select = .... )
+
+
+```
+
+</br>
+
+
+**13.** Calculer la population totale (variable *POP*) des pays Sub-Sahariens :
+
+```{r, eval=FALSE, echo=TRUE}
+
+# Sélection basique [ligne, colonne]
+sum(my_select$POP)
+
+# Cela ne fonctionne pas ? Des Valeurs NA posent problème ? 
+# Un argument supplémentaire doit être spécifié :
+?sum()
+
+```
+
+
+</br>
+
+
+**14.** Afficher un nuage de point avec la fonction `plot()` où :
+
+- x = PIB de chaque pays (GDP)    
+- y = Population des pays (POP)   
+
+```{r, eval=FALSE, echo=TRUE}
+
+plot(x = my_select$....., y = .....)
+
+```
+
+
+</br>
+
+**15.** Enregistrez votre nouveau tableau dans le répertoire *data*
+
+```{r, eval=FALSE, echo=TRUE}
+
+write.csv(x = my_select, file = "data/my_select.csv")
+```
+
+</br>
+
+**Enregistrez votre script !**
+
+
+<div class="alert alert-info" role="alert">
+Un projet Rstudio avec la correction de l'exercice est disponible à ce lien : ....
+</div>
+
+</br>
+
+### **Annexes** - Ressources utiles
+
+<br>
+
+**1. Généralistes** (introduction à R incluses) :
+
+  - [Une introduction à R et au tidyverse](https://juba.github.io/tidyverse/) : manuel de J. Barnier, régulièrement mis à jour.
+  - [Analyse-R](https://larmarange.github.io/analyse-R/) : site généraliste (orienté analyse d'enquête) proposé par J. Larmarange (sociologue, IRD). 
+  - [Parcours R](https://mtes-mct.github.io/parcours-r/) : plusieurs modules de formation pour les agents ministériels français.
+  - [UtilitR](https://www.book.utilitr.org/index.html) : Documentation collaborative sur R, destinée en premier lieu aux agents de l’INSEE
+ 
+
+**2.  Statistique uni et bivariée** (introduction à R incluses) :
+
+
+- [Introduction à la statistique bivariée et aux représentations graphiques avec R](https://claudegrasland.github.io/bivaR/index.html) : support de cours de Claude Grasland.     
+L'intégralité du cours (+ exercices et données) est consulatble à [ce lien](https://moodle.u-paris.fr/course/view.php?id=6306).    
+- [Introduction à R - Statistique descriptive univariée et bivariée](https://huguespecout.github.io/Initiation_R_stats/) : support de cours d'H. Pecout & T.Giraud
+
+
+**3. R Markdown** (production de document avec R) :
+
+- [Une introduction à R et au tidyverse (Partie 13 : Diffuser et publier avec rmarkdown)](https://juba.github.io/tidyverse/13-rmarkdown.html), de Julien Barnier. 
+- [UtilitR (Chapitre 27 : Produire des documents avec R Markdown)](https://www.book.utilitr.org/rmarkdown.html), documentation collaborative d'agents de l'INSEE.     
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) : manuel de référence de de Y. Xie, J. J. Allaire, G. Grolemund      
+- [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) : manuel de référence de Y. Xie, C. Dervieux, E. Riederer.
+   
+
+**4. Géomatique et cartographie** :
+
+- [Geocomputation with R](https://geocompr.robinlovelace.net/) : manuel de référence de R. Lovelace, J. Nowosad & J. Muenchow.    
+- [Geomatique avec R](https://rcarto.github.io/geomatique_avec_r/)  : manuel de T.Giraud & H. Pecout.    
+- [Cartographie avec R](https://rcarto.github.io/cartographie_avec_r/)  : manuel de T.Giraud & H. Pecout. 
+- [Ecole thématique SIGR2021](https://sigr2021.github.io/site/presentations.html) : supports utilisés durant l'école SIGR2021 (Sciences de l’information géographique reproductibles).
+
+</br>
+
+<div class="alert alert-info" role="alert">
+[<img src="https://rzine.fr/img/Rzine_logo.png"  align="left" width="30"/>](http://rzine.fr/)
+<p style="margin-left:45px;margin-top: 5px;font-size:120%;">
+**De nombreuses ressources sur la pratique de R en SHS sont référencées et accessibles sur** [**Rzine.fr**](https://rzine.fr/publication/)</p>
+</div>
+
+
+
+</br>
+
