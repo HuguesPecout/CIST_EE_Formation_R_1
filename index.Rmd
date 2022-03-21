@@ -47,7 +47,7 @@ Code secret : 216590
 **2.** Installez Rstudio desktop (version gratuite) : https://www.rstudio.com/products/rstudio/download/
 
 
-**3.** Lancez <img src="https://upload.wikimedia.org/wikipedia/fr/4/4e/RStudio_Logo.png"  width="60"/>
+**3.** Lancez <img src="https://upload.wikimedia.org/wikipedia/fr/4/4e/RStudio_Logo.png" width="60"/>
 
 
 **4.** Créez un projet Rstudio (*File / New Project / New directory / New Project / ....*)
@@ -56,7 +56,7 @@ Code secret : 216590
 **5.** Créez un nouveau fichier de script R.
 
   - En clic-bouton avec Rstudio (*File / New File / R SCript*), puis *File / Save* pour l'enregistrer   
-  - **Ou** en raccourci clavier :`ctrl`+`SHIFT`+`N` puis `ctrl`+`s` pour l'enregistrer
+  - **Ou** en raccourci clavier :`ctrl`+`SHIFT`+`N` puis `ctrl`+`S` pour l'enregistrer
   - **Ou** en utilisant cette fonction dans la console :
 
 ```{r, eval=FALSE, echo=TRUE}
@@ -75,7 +75,7 @@ dir.create("data")
 
 </br>
 
-**7.** Téléchargez le fichier "*wb_don_1990_2019.xls*" mis à disposition sur le *Sharedocs* (https://bit.ly/3683nRN). Ce fichier comporte des  données sont issues de la Banque Mondiale. Enregistrez-le dans le sous-répertoire *data*. Cette opération peut être réalisée "manuellement", mais peut également être automatisée avec R : 
+**7.** Téléchargez le fichier "*wb_don_1990_2019.xls*" mis à disposition sur le *Sharedocs* (https://bit.ly/3683nRN). Ce fichier comporte des  données issues de la Banque Mondiale. Enregistrez-le dans le sous-répertoire *data*. Cette opération peut être réalisée "manuellement", mais peut également être automatisée avec R : 
 
 ```{r , eval=FALSE, echo=TRUE}
 download.file(url = "https://sharedocs.huma-num.fr/wl/?id=OIdQC31yRfOfrXLPqCfWCxhNffoVrNXj&mode=grid&download=1",
@@ -89,7 +89,7 @@ download.file(url = "https://sharedocs.huma-num.fr/wl/?id=OIdQC31yRfOfrXLPqCfWCx
 **8.** Installez le package `readxl`, en clic-bouton avec Rstudio ou en ligne de commande dans la console : 
 
 ```{r, eval=FALSE, echo=TRUE}
-install.packages("readxl")
+install.packages("......")
 ```
 
 
@@ -98,7 +98,7 @@ install.packages("readxl")
 **9.** Dans votre fichier script, commencez par écrire la fonction qui permet de charger la librairie de fonctions `readxl` :
 
 ```{r, eval=FALSE, echo=TRUE}
-library(readxl)
+library(......)
 ```
 
 
@@ -107,10 +107,10 @@ library(readxl)
 **10.** Utilisez la fonction `read_xls()` pour importer le 3e onglet du fichier de données "*wb_don_1990_2019.xls*". **Assignez-le dans un objet**.
 
 ```{r, eval=FALSE, echo=TRUE}
-# Accédez à l'aide de la fonction read_excel()
+# Accéder à l'aide de la fonction read_excel() :
 ?read_xls
 
-# L'argument sheet vous permet de choisir quel onglet à importer, ex :
+# L'argument 'sheet' vous permet de choisir quel onglet importer :
 read_xls(path = "data/wb_don_1990_2019.xls",
          sheet = ....)
 
@@ -204,10 +204,10 @@ write.csv(x = my_select, file = "data/my_select.csv")
 
 </br>
 
-**N'oubliez pas d'enregistrez votre script !**
+**N'oubliez pas d'enregistrer votre script !**
 
 <div class="alert alert-info" role="alert">
-**Un projet Rstudio avec la correction de l'exercice est disponible en téléchargement à** [**ce lien**](https://github.com/HuguesPecout/CIST_EE_Formation_R_1/archive/refs/heads/master.zip).
+**Un projet Rstudio comportant la correction de l'exercice est disponible en téléchargement à** [**ce lien**](https://github.com/HuguesPecout/CIST_EE_Formation_R_1/archive/refs/heads/master.zip).
 </div>
 
 </br>
@@ -245,7 +245,7 @@ L'intégralité du cours (+ exercices et données) est consulatble à [ce lien](
 - [Geocomputation with R](https://geocompr.robinlovelace.net/) : manuel de référence de R. Lovelace, J. Nowosad & J. Muenchow.    
 - [Geomatique avec R](https://rcarto.github.io/geomatique_avec_r/)  : manuel de T.Giraud & H. Pecout.    
 - [Cartographie avec R](https://rcarto.github.io/cartographie_avec_r/)  : manuel de T.Giraud & H. Pecout. 
-- [Ecole thématique SIGR2021](https://sigr2021.github.io/site/presentations.html) : supports utilisés durant l'école SIGR2021 (Sciences de l’information géographique reproductibles).
+- [Ecole thématique SIGR2021](https://sigr2021.github.io/site/presentations.html) : supports utilisés durant l'école SIGR2021 (sciences de l’information géographique reproductibles).
 
 </br>
 
