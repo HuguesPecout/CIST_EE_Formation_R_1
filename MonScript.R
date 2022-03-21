@@ -44,8 +44,9 @@ my_data <- read_xls(path = "data/wb_don_1990_2019.xls", sheet = 3)
 
 #### 11.  ####
 
+# Visualiser le tableau dans l'IDE Rstudio :
 View(my_data)
-# Nombre de ligne du tableau :
+# Nombre de lignes du tableau :
 nrow(my_data)
 # Nombre de colonnes
 ncol(my_data)

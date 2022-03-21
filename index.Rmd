@@ -47,17 +47,17 @@ Code secret : 216590
 **2.** Installez Rstudio desktop (version gratuite) : https://www.rstudio.com/products/rstudio/download/
 
 
-**3.** Lancez Rstudio (et donc R...)
+**3.** Lancez <img src="https://upload.wikimedia.org/wikipedia/fr/4/4e/RStudio_Logo.png"  width="60"/>
 
 
-**4.** Créez un projet Rstudio : *File / New Project / New directory / New Project / ....*
+**4.** Créez un projet Rstudio (*File / New Project / New directory / New Project / ....*)
 
 
 **5.** Créez un nouveau fichier de script R.
 
-  - En clic-bouton avec Rstudio : *File / New File / R SCript* puis *File / Save* pour l'enregistrer   
-  - Ou Raccourci clavier :`ctrl`+`SHIFT`+`N` puis `ctrl`+`s` pour l'enregistrer
-  - Ou en utilisant cette fonction dans la console :
+  - En clic-bouton avec Rstudio (*File / New File / R SCript*), puis *File / Save* pour l'enregistrer   
+  - **Ou** en raccourci clavier :`ctrl`+`SHIFT`+`N` puis `ctrl`+`s` pour l'enregistrer
+  - **Ou** en utilisant cette fonction dans la console :
 
 ```{r, eval=FALSE, echo=TRUE}
 file.create("Mon_script.R")
@@ -79,7 +79,7 @@ dir.create("data")
 
 ```{r , eval=FALSE, echo=TRUE}
 download.file(url = "https://sharedocs.huma-num.fr/wl/?id=OIdQC31yRfOfrXLPqCfWCxhNffoVrNXj&mode=grid&download=1",
-              destfile = "data/wb_don_1990_20192.xlsx")
+              destfile = "data/wb_don_1990_2019.xls", method = "curl"  )
 ```
 
 </br>
@@ -104,7 +104,7 @@ library(readxl)
 
 </br>
 
-**10.** Utilisez la fonction `read_excel()` pour importer le 3e onglet du fichier de données "*wb_don_1990_2019.xls*". **Assignez-le dans un objet**.
+**10.** Utilisez la fonction `read_xls()` pour importer le 3e onglet du fichier de données "*wb_don_1990_2019.xls*". **Assignez-le dans un objet**.
 
 ```{r, eval=FALSE, echo=TRUE}
 # Accédez à l'aide de la fonction read_excel()
@@ -112,7 +112,7 @@ library(readxl)
 
 # L'argument sheet vous permet de choisir quel onglet à importer, ex :
 read_xls(path = "data/wb_don_1990_2019.xls",
-         sheet = 3)
+         sheet = ....)
 
 # N'oubliez pas d'assigner le résultat de l'import dans un objet !
 my_data <- read_xls(path = ... )
@@ -122,15 +122,15 @@ my_data <- read_xls(path = ... )
 
 **11.** Explorez votre nouvel objet créé, qui contient le tableau de données importé :
 
-   - En clic-bouton avec l'interface Rstudio (dans la fenêtre situé en haut à droite, onglet *Environment*)
-   - En appliquant les fonctions suivantes sur votre objet:
+   - En clic-bouton avec l'interface Rstudio (dans la fenêtre située en haut à droite, onglet *Environment*)
+   - En appliquant les fonctions suivantes sur votre objet :
    
 
 ```{r, eval=FALSE, echo=TRUE}
 
-# Ouvrir le tableau de l'IDE Rstudio :
+# Visualiser le tableau dans l'IDE Rstudio :
 View()
-# Nombre de ligne du tableau :
+# Nombre de lignes du tableau :
 nrow()
 # Nombre de colonnes
 ncol()
@@ -144,7 +144,7 @@ colnames()
 </br>
 
 
-**12.** Sélectionner uniquement les pays de la région Sub-saharienne ET les colonnes de 1 à 13 :
+**12.** Sélectionnez uniquement les pays de la région Sub-saharienne **ET** les colonnes de 1 à 13 :
 
 
 ```{r, eval=FALSE, echo=TRUE}
@@ -152,7 +152,7 @@ colnames()
 # Sélection basique [ligne, colonne]
 my_data[my_data$region %in% "......", ]
 
-# OU Sélection avec fonction primitive subset()
+# OU Sélection avec la fonction primitive subset()
 subset(x = ......, 
        subset =  region %in% "......", 
        select = .... )
@@ -163,12 +163,12 @@ subset(x = ......,
 </br>
 
 
-**13.** Calculer la population totale (variable *POP*) des pays Sub-Sahariens :
+**13.** Calculez la population totale (variable *POP*) des pays Sub-Sahariens :
 
 ```{r, eval=FALSE, echo=TRUE}
 
 # Sélection basique [ligne, colonne]
-sum(my_select$POP)
+sum(my_select$.....)
 
 # Cela ne fonctionne pas ? Des Valeurs NA posent problème ? 
 # Un argument supplémentaire doit être spécifié :
@@ -180,7 +180,7 @@ sum(my_select$POP)
 </br>
 
 
-**14.** Afficher un nuage de point avec la fonction `plot()` où :
+**14.** Affichez un nuage de points avec la fonction `plot()`, où :
 
 - x = PIB de chaque pays (GDP)    
 - y = Population des pays (POP)   
@@ -191,10 +191,11 @@ plot(x = my_select$....., y = .....)
 
 ```
 
+Essayer de changer la couleur des points.
 
 </br>
 
-**15.** Enregistrez votre nouveau tableau dans le répertoire *data*
+**15.** Enregistrez votre nouveau tableau dans le répertoire *data* :
 
 ```{r, eval=FALSE, echo=TRUE}
 
@@ -203,8 +204,7 @@ write.csv(x = my_select, file = "data/my_select.csv")
 
 </br>
 
-**Enregistrez votre script !**
-
+**N'oubliez pas d'enregistrez votre script !**
 
 <div class="alert alert-info" role="alert">
 **Un projet Rstudio avec la correction de l'exercice est disponible en téléchargement à** [**ce lien**](https://github.com/HuguesPecout/CIST_EE_Formation_R_1/archive/refs/heads/master.zip).
