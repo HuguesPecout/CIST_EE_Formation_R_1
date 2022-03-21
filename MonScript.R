@@ -24,25 +24,26 @@ download.file(url = "https://sharedocs.huma-num.fr/wl/?id=OIdQC31yRfOfrXLPqCfWCx
 
 
 
-#### 8.  ####
+#### 8. Installation du package readxl ####
 
 # install.packages("readxl")
 
 
 
 
-#### 9.  ####
+#### 9. Chargement de la librairie ####
 
 library(readxl)
 
 
 
-#### 10.  ####
+#### 10. Import de l'onglet 3 du fichier wb_don_1990_2019.xls ####
 
 my_data <- read_xls(path = "data/wb_don_1990_2019.xls", sheet = 3)
 
 
-#### 11.  ####
+
+#### 11. Exploration du tableau importé ####
 
 # Visualiser le tableau dans l'IDE Rstudio :
 View(my_data)
@@ -56,7 +57,8 @@ dim(my_data)
 colnames(my_data)
 
 
-#### 12.  ####
+
+#### 12.  Séléction des pays sub-saharien et des colonnes de 1 à 13 ####
 
 
 my_select <- my_data[my_data$region %in% "Sub-Saharan Africa", 1:13]
@@ -69,14 +71,15 @@ my_select <- subset(x = my_data,
 
 
 
-#### 13.  ####
+
+#### 13. Calcul de la population totale ####
 
 sum(my_select$POP, na.rm = TRUE)
 
 
 
 
-#### 14.  ####
+#### 14. Représentation graphique (x = GDP et y = POP)  ####
 
 plot(x = my_select$GDP, 
      y = my_select$POP,
@@ -86,7 +89,8 @@ plot(x = my_select$GDP,
 
 
 
-#### 15.  ####
+
+#### 15. Enregistrement du tableau modifié dans un fichier csv ####
 
 write.csv(x = my_select, file = "data/my_select.csv")
 
