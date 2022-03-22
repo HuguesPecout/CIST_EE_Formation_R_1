@@ -21,7 +21,7 @@ Code secret : 216590
 </div>
 
 <div class="alert alert-info" role="alert">
-**Enregistrement vidéo de la séance disponible sur le sharedocs de l'école d'été : ** [**CONSULTER**](https://sharedocs.huma-num.fr/#/HOME/Ecole_ete_CIST/Formation_R/S%C3%A9ance%201%20-%20INTRODUCTION)
+**Enregistrement vidéo de la séance disponible sur le sharedocs de l'école d'été : ** [**CONSULTER**](https://bit.ly/3NdYzej)
 </div>
 
 
