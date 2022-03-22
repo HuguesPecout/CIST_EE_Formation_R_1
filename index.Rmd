@@ -21,7 +21,7 @@ Code secret : 216590
 </div>
 
 <div class="alert alert-info" role="alert">
-**Enregistrement vidéo de la séance disponible à ce lien** : *A venir*
+**Enregistrement vidéo de la séance disponible sur le sharedocs de l'école d'été : ** [**CONSULTER**](https://sharedocs.huma-num.fr/#/HOME/Ecole_ete_CIST/Formation_R/S%C3%A9ance%201%20-%20INTRODUCTION)
 </div>
 
 
@@ -47,7 +47,7 @@ Code secret : 216590
 **2.** Installez Rstudio desktop (version gratuite) : https://www.rstudio.com/products/rstudio/download/
 
 
-**3.** Lancez <img src="https://upload.wikimedia.org/wikipedia/fr/4/4e/RStudio_Logo.png" width="60"/>
+**3.** Lancez Rstudio
 
 
 **4.** Créez un projet Rstudio (*File / New Project / New directory / New Project / ....*)
